@@ -20,7 +20,7 @@ void LCD_SendData(uint16_t data)
 }
 
 
-void LCD_Clear( uint16_t color)
+void LCD_ili9341_Clear( uint16_t color)
 {	     
 	LCD_SetCursorPosition(0, 0,  LCD_WIDTH - 1, LCD_HEIGHT - 1);
 	  uint32_t n = LCD_PIXEL_COUNT;
@@ -136,7 +136,7 @@ void WriteString(unsigned char x0,unsigned int y0,  char *s,unsigned int color)/
     }		
 }
 
-void LCD_DrawPoint(uint16_t ysta, uint16_t xsta, uint16_t color)
+void LCD_ili9341_DrawPoint(uint16_t ysta, uint16_t xsta, uint16_t color)
 {
 	LCD_SetCursorPosition(xsta, ysta, xsta, ysta);
 	LCD_SendData(color); 
@@ -144,7 +144,7 @@ void LCD_DrawPoint(uint16_t ysta, uint16_t xsta, uint16_t color)
 
 
 
-void LCD_DrawHLine(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t color)
+void LCD_ili9341_DrawHLine(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t color)
 {
 	unsigned int y;
 
@@ -163,7 +163,7 @@ void LCD_DrawHLine(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t color)
 ** Functoin name:       LCD_DrawVLine
 *********************************************************************************************************/
 
-void LCD_DrawVLine(uint16_t xsta, uint16_t ysta, uint16_t yend, uint16_t color)
+void LCD_ili9341_DrawVLine(uint16_t xsta, uint16_t ysta, uint16_t yend, uint16_t color)
 {
 	unsigned int y;
 
@@ -177,18 +177,18 @@ void LCD_DrawVLine(uint16_t xsta, uint16_t ysta, uint16_t yend, uint16_t color)
 
 
 
-void LCD_DrawLine(uint16_t ysta, uint16_t xsta, uint16_t yend, uint16_t xend, uint16_t color)
+void LCD_ili9341_DrawLine(uint16_t ysta, uint16_t xsta, uint16_t yend, uint16_t xend, uint16_t color)
 {
     uint16_t x, y, t;	 
 	if((xsta==xend)&&(ysta==yend))
-		LCD_DrawPoint(xsta, ysta, color);
+		LCD_ili9341_DrawPoint(xsta, ysta, color);
 	else if(xsta==xend)
 	{
-		LCD_DrawVLine(xsta,ysta,yend,color);
+		LCD_ili9341_DrawVLine(xsta,ysta,yend,color);
 	}
 	else if(ysta==yend)
 	{	
-		LCD_DrawHLine(xsta,ysta,xend,color);
+		LCD_ili9341_DrawHLine(xsta,ysta,xend,color);
 	}
 	else{ 
 		if(abs(yend-ysta)>abs(xend-xsta))
@@ -205,7 +205,7 @@ void LCD_DrawLine(uint16_t ysta, uint16_t xsta, uint16_t yend, uint16_t xend, ui
 			for(y=ysta;y<yend;y++)
 			{
 				x = (uint32_t)(y-ysta)*(xend-xsta)/(yend-ysta)+xsta;
-				LCD_DrawPoint(x, y, color);  
+				LCD_ili9341_DrawPoint(x, y, color);  
 			}
 		}
 		else
@@ -222,7 +222,7 @@ void LCD_DrawLine(uint16_t ysta, uint16_t xsta, uint16_t yend, uint16_t xend, ui
 			for(x=xsta;x<=xend;x++)
 			{
 				y = (uint32_t)(x-xsta)*(yend-ysta)/(xend-xsta)+ysta;
-				LCD_DrawPoint(x, y, color); 
+				LCD_ili9341_DrawPoint(x, y, color); 
 			}
 		}
 	} 
@@ -237,7 +237,7 @@ LCD_SendData(bright);     // PWM duty cycle
 }
 
 
-void ili9341_SetRotation(uint8_t r)
+void LCD_ili9341_SetRotation(uint8_t r)
 {
 	LCD_SendCommand(0x36);
 	switch(r)
@@ -269,7 +269,7 @@ void ili9341_SetRotation(uint8_t r)
 //******************************************************************************
 //***       ������������� �������
 //******************************************************************************
-void LCD_ini (void)
+void LCD_ili9341_ini (void)
 	{
 	//1. Power up the system platform and assert the RESET# signal (�L� state) for a minimum of 100us to reset the controller. 
 		TFT_RST_SET
@@ -325,7 +325,7 @@ void LCD_ini (void)
     			LCD_SendCommand(0xC7);//VCOM Control 2
     			LCD_SendData(0x86);
     			//DelayMicro(1);
-    			ili9341_SetRotation(3);
+    			LCD_ili9341_SetRotation(3);
     			//DelayMicro(1);
     			LCD_SendCommand(0x3A);//Pixel Format Set
     			LCD_SendData(0x55);//16bit

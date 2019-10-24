@@ -41,6 +41,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+CRC_HandleTypeDef hcrc;
+
 RTC_HandleTypeDef hrtc;
 
 SPI_HandleTypeDef hspi1;
@@ -54,6 +56,7 @@ SRAM_HandleTypeDef hsram1;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_CRC_Init(void);
 static void MX_FSMC_Init(void);
 static void MX_RTC_Init(void);
 static void MX_SPI1_Init(void);
@@ -95,21 +98,16 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_CRC_Init();
   MX_FSMC_Init();
   MX_RTC_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-   LCD_ini();
-   LCD_Clear(RED);
+   LCD_ili9341_ini();
+   GUI_Init();
+   LCD_ili9341_Clear(RED);
 
-  if (0) // 1 - калибруем, 0- вносим значения в матрицу (значения (Matrix) должны быть заранее внесены Вами, например посмотрев их в Дебаггере)
-  {
-  TouchPanel_Calibrate();
-  }
-  else
-  {
-  	Touch_Cal_Read (&matrix);
-  }
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -117,8 +115,6 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  getDisplayPoint(&display, Read_Ads7846(), &matrix ); // опрашиваем ТАЧ, результат лежит в реальных коорд. дисплея в display.x и display.у
-	  	  LCD_DrawPoint (display.x, display.y, WHITE); // ставим точку
 
     /* USER CODE BEGIN 3 */
   }
@@ -173,6 +169,32 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief CRC Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_CRC_Init(void)
+{
+
+  /* USER CODE BEGIN CRC_Init 0 */
+
+  /* USER CODE END CRC_Init 0 */
+
+  /* USER CODE BEGIN CRC_Init 1 */
+
+  /* USER CODE END CRC_Init 1 */
+  hcrc.Instance = CRC;
+  if (HAL_CRC_Init(&hcrc) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN CRC_Init 2 */
+
+  /* USER CODE END CRC_Init 2 */
+
 }
 
 /**

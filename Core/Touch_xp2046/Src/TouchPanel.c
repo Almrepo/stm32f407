@@ -75,10 +75,10 @@ HAL_SPI_TransmitReceive(&hspi1, &cmd, (uint8_t *) &temp, 1, 3000);
 *******************************************************************************/
 void DrawCross(uint16_t Xpos,uint16_t Ypos) // ������ �������
 {
-  LCD_DrawLine(Xpos-15,Ypos,Xpos-2,Ypos,0xffff);
-  LCD_DrawLine(Xpos+2,Ypos,Xpos+15,Ypos,0xffff);
-  LCD_DrawLine(Xpos,Ypos-15,Xpos,Ypos-2,0xffff);
-  LCD_DrawLine(Xpos,Ypos+2,Xpos,Ypos+15,0xffff);
+  LCD_ili9341_DrawLine(Xpos-15,Ypos,Xpos-2,Ypos,0xffff);
+  LCD_ili9341_DrawLine(Xpos+2,Ypos,Xpos+15,Ypos,0xffff);
+  LCD_ili9341_DrawLine(Xpos,Ypos-15,Xpos,Ypos-2,0xffff);
+  LCD_ili9341_DrawLine(Xpos,Ypos+2,Xpos,Ypos+15,0xffff);
 }	
 
 /*******************************************************************************
@@ -283,7 +283,7 @@ void TouchPanel_Calibrate(void)
 
   for(i=0;i<3;i++)
   {
-		LCD_Clear(BLACK);
+		LCD_ili9341_Clear(BLACK);
 	 sprintf( array,"Touch to calibrate");
 	 WriteString( 10, 50, array , WHITE);
 
@@ -299,7 +299,7 @@ void TouchPanel_Calibrate(void)
   	HAL_Delay(500);
   }
   setCalibrationMatrix( &DisplaySample[0],&ScreenSample[0],&matrix );
-LCD_Clear(BLACK);
+LCD_ili9341_Clear(BLACK);
 
 
 } 

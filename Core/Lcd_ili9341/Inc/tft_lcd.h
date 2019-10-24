@@ -24,18 +24,19 @@ void LCD_SendCommand(uint16_t com);
 void LCD_SendData(uint16_t data);
 void LCD_SetCursorPosition(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
 
- void LCD_ini(void);
+ void LCD_ili9341_ini(void);
 //void bright_PWM_ssd1963(uint8_t bright);
-extern void LCD_Clear( uint16_t color);
-void LCD_DrawPixel(uint16_t x, uint16_t y, uint16_t color);
-void LCD_DrawString(uint32_t x, uint32_t y,char *str);
+extern void LCD_ili9341_Clear( uint16_t color);
+void LCD_ili9341_DrawPixel(uint16_t x, uint16_t y, uint16_t color);
+void LCD_ili9341_DrawString(uint32_t x, uint32_t y,char *str);
 void WriteChar(unsigned char x0, unsigned char y0, unsigned char s, uint16_t color, uint16_t back_color);
 void WriteString(unsigned char x0,unsigned int y0, char *s,unsigned int color);//, unsigned int back_color)
-void LCD_DrawPoint(uint16_t ysta, uint16_t xsta, uint16_t color);
-void LCD_DrawVLine(uint16_t xsta, uint16_t ysta, uint16_t yend, uint16_t color);
-void LCD_DrawHLine(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t color);
-void LCD_DrawLine(uint16_t ysta, uint16_t xsta, uint16_t yend, uint16_t xend, uint16_t color);
-void ili9341_SetRotation(uint8_t r);
+void LCD_ili9341_DrawPoint(uint16_t ysta, uint16_t xsta, uint16_t color);
+void LCD_ili9341_DrawVLine(uint16_t xsta, uint16_t ysta, uint16_t yend, uint16_t color);
+void LCD_ili9341_DrawHLine(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t color);
+void LCD_ili9341_DrawLine(uint16_t ysta, uint16_t xsta, uint16_t yend, uint16_t xend, uint16_t color);
+void LCD_ili9341_SetRotation(uint8_t r);
+
 
 
 //Commands

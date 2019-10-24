@@ -37,6 +37,7 @@ extern "C" {
 #include "font.h"
 #include "tft_lcd.h"
 #include "TouchPanel.h"
+#include "GUI.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
