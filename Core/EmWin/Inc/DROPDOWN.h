@@ -54,9 +54,9 @@ Purpose     : Multiple choice object include
 #ifndef DROPDOWN_H
 #define DROPDOWN_H
 
-#include "WM.h"
-#include "DIALOG_Intern.h"      /* Req. for Create indirect data structure */
-#include "LISTBOX.h"
+#include <Inc/DIALOG_Intern.h>      /* Req. for Create indirect data structure */
+#include <Inc/LISTBOX.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

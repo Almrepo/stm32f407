@@ -54,9 +54,9 @@ Purpose     : SLIDER private header file
 #ifndef SLIDER_PRIVATE_H
 #define SLIDER_PRIVATE_H
 
-#include "WM.h"
-#include "WIDGET.h"
-#include "SLIDER.h"
+#include <Inc/SLIDER.h>
+#include <Inc/WIDGET.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

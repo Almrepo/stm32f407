@@ -35,10 +35,10 @@ Purpose     : SWIPELIST include
 #ifndef SWIPELIST_H
 #define SWIPELIST_H
 
-#include "WM.h"
-#include "DIALOG_Intern.h"      // Req. for Create indirect data structure
-#include "WIDGET.h"
-#include "GUI_Debug.h"
+#include <Inc/DIALOG_Intern.h>      // Req. for Create indirect data structure
+#include <Inc/GUI_Debug.h>
+#include <Inc/WIDGET.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

@@ -54,8 +54,8 @@ Purpose     : MULTIEDIT include
 #ifndef MULTIEDIT_H
 #define MULTIEDIT_H
 
-#include "WM.h"
-#include "DIALOG_Intern.h"      /* Req. for Create indirect data structure */
+#include <Inc/DIALOG_Intern.h>      /* Req. for Create indirect data structure */
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

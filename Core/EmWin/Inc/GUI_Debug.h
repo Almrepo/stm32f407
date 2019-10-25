@@ -57,9 +57,9 @@ Purpose     : Debug macros
 #ifndef GUI_DEBUG_H
 #define GUI_DEBUG_H
 
+#include <Inc/GUI.h>
 #include <stddef.h>
 
-#include "GUI.h"
 
 #define GUI_DEBUG_LEVEL_NOCHECK       0  /* No run time checks are performed */
 #define GUI_DEBUG_LEVEL_CHECK_PARA    1  /* Parameter checks are performed to avoid crashes */

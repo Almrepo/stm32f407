@@ -54,10 +54,10 @@ Purpose     : Frame window include
 #ifndef FRAMEWIN_H
 #define FRAMEWIN_H
 
-#include "WM.h"
-#include "WIDGET.h"             /* Req. for WIDGET_DRAW_ITEM_FUNC */
+#include <Inc/WIDGET.h>             /* Req. for WIDGET_DRAW_ITEM_FUNC */
+#include <Inc/WM.h>
 #if GUI_WINSUPPORT
-#include "DIALOG_Intern.h"      /* Req. for Create indirect data structure */
+#include <Inc/DIALOG_Intern.h>      /* Req. for Create indirect data structure */
 
 #if defined(__cplusplus)
   extern "C" {     /* Make sure we have C-declarations in C++ programs */

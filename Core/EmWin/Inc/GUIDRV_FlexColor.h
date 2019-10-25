@@ -54,7 +54,7 @@ Purpose     : Interface definition for GUIDRV_FlexColor driver
 #ifndef GUIDRV_FLEXCOLOR_H
 #define GUIDRV_FLEXCOLOR_H
 
-#include "GUI.h"
+#include <Inc/GUI.h>
 
 #if defined(__cplusplus)
 extern "C" {     /* Make sure we have C-declarations in C++ programs */

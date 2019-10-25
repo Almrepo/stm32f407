@@ -51,7 +51,7 @@ Purpose     : Runtime display orientation without cache
   ******************************************************************************
   */
   
-#include "GUI_SetOrientation.h"
+#include <Inc/GUI_SetOrientation.h>
 
 /*********************************************************************
 *

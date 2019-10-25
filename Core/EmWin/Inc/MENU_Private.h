@@ -54,9 +54,9 @@ Purpose     : Internal header file
 #ifndef MENU_PRIVATE_H
 #define MENU_PRIVATE_H
 
-#include "WIDGET.h"
-#include "MENU.h"
-#include "GUI_ARRAY.h"
+#include <Inc/GUI_ARRAY.h>
+#include <Inc/MENU.h>
+#include <Inc/WIDGET.h>
 
 #if GUI_WINSUPPORT
 

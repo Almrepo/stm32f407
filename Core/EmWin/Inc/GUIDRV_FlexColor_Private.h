@@ -51,7 +51,7 @@ Purpose     : Private declarations for GUIDRV_FlexColor driver
   ******************************************************************************
   */
   
-#include "GUIDRV_FlexColor.h"
+#include <Inc/GUIDRV_FlexColor.h>
 
 #ifndef GUIDRV_FLEXCOLOR_PRIVATE_H
 #define GUIDRV_FLEXCOLOR_PRIVATE_H

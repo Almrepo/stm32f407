@@ -54,8 +54,8 @@ Purpose     : Internal header file
 #ifndef PROGBAR_PRIVATE_H
 #define PROGBAR_PRIVATE_H
 
-#include "PROGBAR.h"
-#include "WIDGET.h"
+#include <Inc/PROGBAR.h>
+#include <Inc/WIDGET.h>
 
 #if GUI_WINSUPPORT
 

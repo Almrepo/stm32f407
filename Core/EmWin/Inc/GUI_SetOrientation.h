@@ -54,7 +54,7 @@ Purpose     : Private include file for GUI_SetOrientation_xxx
 #ifndef GUI_SETORIENTATION_H
 #define GUI_SETORIENTATION_H
 
-#include "GUI_Private.h"
+#include <Inc/GUI_Private.h>
 
 /*********************************************************************
 *

@@ -54,7 +54,7 @@ Purpose     : File dialog interface
 #ifndef CHOOSEFILE_H
 #define CHOOSEFILE_H
 
-#include "WM.h"
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

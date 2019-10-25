@@ -54,13 +54,13 @@ Purpose     : RADIO private header file
 #ifndef RADIO_PRIVATE_H
 #define RADIO_PRIVATE_H
 
-#include "WM.h"
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 
-#include "RADIO.h"
-#include "WIDGET.h"
-#include "GUI_ARRAY.h"
+#include <Inc/RADIO.h>
+#include <Inc/WIDGET.h>
+#include <Inc/GUI_ARRAY.h>
 
 /*********************************************************************
 *

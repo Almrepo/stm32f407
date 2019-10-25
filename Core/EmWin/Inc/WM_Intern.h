@@ -54,8 +54,8 @@ Purpose     : Windows manager internal include
 #ifndef WM_INTERN_H            /* Make sure we only include it once */
 #define WM_INTERN_H            /* Make sure we only include it once */
 
-#include "WM.h"
-#include "GUI_Private.h"
+#include <Inc/GUI_Private.h>
+#include <Inc/WM.h>
 
 
 #if defined(__cplusplus)

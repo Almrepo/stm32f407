@@ -54,9 +54,9 @@ Purpose     : GUI API include file
 #ifndef  GUI_H
 #define  GUI_H
 
-#include "GUI_ConfDefaults.h"
-#include "GUI_Type.h"
-#include "GUI_Version.h"
+#include <Inc/GUI_ConfDefaults.h>
+#include <Inc/GUI_Type.h>
+#include <Inc/GUI_Version.h>
 
 #if defined(__cplusplus)
 extern "C" {     /* Make sure we have C-declarations in C++ programs */
@@ -2420,7 +2420,7 @@ extern GUI_CONST_STORAGE GUI_FONT GUI_FontComic24B_ASCII, GUI_FontComic24B_1;
 #if defined(__cplusplus)
 }
 #endif
-
+void OS_TimeMS_Inc(void);
 #endif   /* ifdef GUI_H */
 
 /*************************** End of file ****************************/

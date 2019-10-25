@@ -54,8 +54,8 @@ Purpose     : Private IMAGE include
 #ifndef IMAGE_PRIVATE_H
 #define IMAGE_PRIVATE_H
 
-#include "IMAGE.h"
-#include "GUI_Private.h"
+#include <Inc/GUI_Private.h>
+#include <Inc/IMAGE.h>
 
 #if GUI_WINSUPPORT
 

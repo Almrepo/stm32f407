@@ -54,10 +54,10 @@ Purpose     : Private LISTBOX include
 #ifndef LISTBOX_PRIVATE_H
 #define LISTBOX_PRIVATE_H
 
-#include "LISTBOX.h"
-#include "WM.h"
-#include "GUI_ARRAY.h"
-#include "WIDGET.h"
+#include <Inc/GUI_ARRAY.h>
+#include <Inc/LISTBOX.h>
+#include <Inc/WIDGET.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

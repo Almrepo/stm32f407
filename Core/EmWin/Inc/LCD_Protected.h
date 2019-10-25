@@ -54,7 +54,7 @@ Purpose     : LCD level - To be used only internally by the GUI
 #ifndef LCD_PROTECTED_H
 #define LCD_PROTECTED_H
 
-#include "LCD.h"
+#include <Inc/LCD.h>
 
 #if defined(__cplusplus)
 extern "C" {     /* Make sure we have C-declarations in C++ programs */

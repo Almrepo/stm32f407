@@ -54,7 +54,7 @@ Purpose     : Message box interface
 #ifndef MESSAGEBOX_H
 #define MESSAGEBOX_H
 
-#include "WM.h"
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

@@ -54,9 +54,9 @@ Purpose     : SCROLLBAR internal header file
 #ifndef SCROLLBAR_PRIVATE_H
 #define SCROLLBAR_PRIVATE_H
 
-#include "SCROLLBAR.h"
-#include "WIDGET.h"
-#include "GUI_Debug.h"
+#include <Inc/GUI_Debug.h>
+#include <Inc/SCROLLBAR.h>
+#include <Inc/WIDGET.h>
 
 #if GUI_WINSUPPORT
 

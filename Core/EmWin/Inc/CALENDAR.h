@@ -54,7 +54,7 @@ Purpose     : Message box interface
 #ifndef CALENDAR_H
 #define CALENDAR_H
 
-#include "WM.h"
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

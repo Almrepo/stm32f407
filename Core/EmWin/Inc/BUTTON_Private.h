@@ -54,8 +54,8 @@ Purpose     : BUTTON private header file
 #ifndef BUTTON_PRIVATE_H
 #define BUTTON_PRIVATE_H
 
-#include "WM.h"
-#include "BUTTON.h"
+#include <Inc/BUTTON.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

@@ -54,8 +54,8 @@ Purpose     : TEXT include
 #ifndef TEXT_PRIVATE_H
 #define TEXT_PRIVATE_H
 
-#include "TEXT.h"
-#include "GUI_Private.h"
+#include <Inc/GUI_Private.h>
+#include <Inc/TEXT.h>
 
 #if GUI_WINSUPPORT
 

@@ -51,8 +51,8 @@ Purpose     : Interface definition for GUIDRV_TemplateI driver
   ******************************************************************************
   */
   
-#include "GUIDRV_TemplateI.h"
-#include "GUIDRV_NoOpt_1_8.h"
+#include <Inc/GUIDRV_NoOpt_1_8.h>
+#include <Inc/GUIDRV_TemplateI.h>
 
 #ifndef GUIDRV_TEMPLATE_I_PRIVATE_H
 #define GUIDRV_TEMPLATE_I_PRIVATE_H

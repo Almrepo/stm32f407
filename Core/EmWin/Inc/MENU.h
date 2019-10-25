@@ -54,9 +54,9 @@ Purpose     : MENU include
 #ifndef MENU_H
 #define MENU_H
 
-#include "WM.h"
-#include "WIDGET.h"
-#include "DIALOG_Intern.h"      // Required for Create indirect data structure
+#include <Inc/DIALOG_Intern.h>      // Required for Create indirect data structure
+#include <Inc/WIDGET.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

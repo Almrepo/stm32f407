@@ -54,9 +54,9 @@ Purpose     : ICONVIEW private header file
 #ifndef ICONVIEW_PRIVATE_H
 #define ICONVIEW_PRIVATE_H
 
-#include "WM.h"
-#include "GUI_ARRAY.h"
-#include "ICONVIEW.h"
+#include <Inc/GUI_ARRAY.h>
+#include <Inc/ICONVIEW.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

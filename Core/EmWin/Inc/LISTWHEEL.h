@@ -54,9 +54,9 @@ Purpose     : LISTWHEEL widget include
 #ifndef LISTWHEEL_H
 #define LISTWHEEL_H
 
-#include "WM.h"
-#include "DIALOG_Intern.h"
-#include "WIDGET.h"
+#include <Inc/DIALOG_Intern.h>
+#include <Inc/WIDGET.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

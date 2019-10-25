@@ -54,7 +54,7 @@ Purpose     : Message box interface
 #ifndef CHOOSECOLOR_H
 #define CHOOSECOLOR_H
 
-#include "WM.h"
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

@@ -54,9 +54,9 @@ Purpose     : DROPDOWN private header file
 #ifndef DROPDOWN_PRIVATE_H
 #define DROPDOWN_PRIVATE_H
 
-#include "DROPDOWN.h"
-#include "WIDGET.h"
-#include "GUI_ARRAY.h"
+#include <Inc/DROPDOWN.h>
+#include <Inc/GUI_ARRAY.h>
+#include <Inc/WIDGET.h>
 
 #if GUI_WINSUPPORT
 

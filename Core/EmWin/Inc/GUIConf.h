@@ -27,10 +27,9 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
-File        : GUI_ARRAY_Private.h
-Purpose     : Private array handling routines, should be used only
-              from within GUI_ARRAY... routines!
----------------------------END-OF-HEADER------------------------------
+File        : GUIConf.h
+Purpose     : Configures emWins abilities, fonts etc.
+----------------------------------------------------------------------
 */
 
 /**
@@ -51,37 +50,47 @@ Purpose     : Private array handling routines, should be used only
   *
   ******************************************************************************
   */
-  
-#ifndef GUI_ARRAY_PRIVATE_H
-#define GUI_ARRAY_PRIVATE_H
-
-#include <Inc/GUI_ARRAY.h>
-
-#if GUI_WINSUPPORT
+ 
+#ifndef GUICONF_H
+#define GUICONF_H
 
 /*********************************************************************
 *
-*       Private types
-*
-**********************************************************************
+*       Multi layer/display support
 */
-typedef struct {
-  U16 NumItems;
-  WM_HMEM haHandle;   /* Handle to buffer holding handles */
-} GUI_ARRAY_OBJ;
+#define GUI_NUM_LAYERS            2    // Maximum number of available layers
 
 /*********************************************************************
 *
-*       Private functions
-*
-**********************************************************************
+*       Multi tasking support
 */
-WM_HMEM GUI_ARRAY__GethItem      (const GUI_ARRAY_OBJ * pThis, unsigned int Index);
-void  * GUI_ARRAY__GetpItem      (const GUI_ARRAY_OBJ * pThis, unsigned int Index);
-void  * GUI_ARRAY__GetpItemLocked(const GUI_ARRAY_OBJ * pThis, unsigned int Index);
-int     GUI_ARRAY__SethItem      (      GUI_ARRAY_OBJ * pThis, unsigned int Index, WM_HMEM hItem);
+#ifdef OS_SUPPORT
+ #define GUI_OS                    (1)  // Compile with multitasking support
+#else
+ #define GUI_OS                    (0)
+#endif
 
-#endif /* GUI_WINSUPPORT */
+/*********************************************************************
+*
+*       Configuration of touch support
+*/
+#ifndef   GUI_SUPPORT_TOUCH
+  #define GUI_SUPPORT_TOUCH       (1)  // Support touchscreen
+#endif
 
-#endif /* GUI_ARRAY_PRIVATE_H */
+/*********************************************************************
+*
+*       Default font
+*/
+#define GUI_DEFAULT_FONT          &GUI_Font6x8
 
+/*********************************************************************
+*
+*         Configuration of available packages
+*/
+#define GUI_SUPPORT_MOUSE             (1)    /* Support a mouse */
+#define GUI_WINSUPPORT                (1)    /* Use window manager */
+#define GUI_SUPPORT_MEMDEV            (1)    /* Memory device package available */
+#define GUI_SUPPORT_DEVICES           (1)    /* Enable use of device pointers */
+
+#endif  /* Avoid multiple inclusion */

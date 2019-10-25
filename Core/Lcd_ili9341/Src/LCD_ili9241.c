@@ -1,5 +1,5 @@
 #include "stm32f4xx.h"
-#include "tft_lcd.h"
+#include "LCD_ili9341.h"
 
 
 uint16_t X_SIZE = 0;

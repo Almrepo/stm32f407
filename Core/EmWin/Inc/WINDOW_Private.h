@@ -54,7 +54,7 @@ Purpose     : WINDOW private header file
 #ifndef WINDOW_PRIVATE_H
 #define WINDOW_PRIVATE_H
 
-#include "WM.h"
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

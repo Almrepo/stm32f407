@@ -54,7 +54,7 @@ Purpose     : Private header file for GUI_GIF... functions
 #ifndef GUI_GIF_PRIVATE_H
 #define GUI_GIF_PRIVATE_H
 
-#include "GUI_Private.h"
+#include <Inc/GUI_Private.h>
 
 /*********************************************************************
 *

@@ -51,7 +51,7 @@ Purpose     : Interface definition for non optimized drawing functions
   ******************************************************************************
   */
   
-#include "GUI_Private.h"
+#include <Inc/GUI_Private.h>
 
 #ifndef GUIDRV_NOOPT_1_8_H
 #define GUIDRV_NOOPT_1_8_H

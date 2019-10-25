@@ -54,9 +54,9 @@ Purpose     : CHECKBOX private header file
 #ifndef CHECKBOX_PRIVATE_H
 #define CHECKBOX_PRIVATE_H
 
-#include "WM.h"
-#include "WIDGET.h"
-#include "CHECKBOX.h"
+#include <Inc/CHECKBOX.h>
+#include <Inc/WIDGET.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

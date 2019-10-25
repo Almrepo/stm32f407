@@ -54,8 +54,8 @@ Purpose     : MULTIPAGE include
 #ifndef MULTIPAGE_H
 #define MULTIPAGE_H
 
-#include "WM.h"
-#include "DIALOG.h"   // Required for Create indirect data structure
+#include <Inc/DIALOG.h>   // Required for Create indirect data structure
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

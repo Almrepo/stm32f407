@@ -54,10 +54,10 @@ Purpose     : Private LISTWHEEL include
 #ifndef LISTWHEEL_PRIVATE_H
 #define LISTWHEEL_PRIVATE_H
 
-#include "LISTWHEEL.h"
-#include "WM.h"
-#include "GUI_ARRAY.h"
-#include "WIDGET.h"
+#include <Inc/GUI_ARRAY.h>
+#include <Inc/LISTWHEEL.h>
+#include <Inc/WIDGET.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

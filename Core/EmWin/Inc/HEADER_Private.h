@@ -55,10 +55,10 @@ Purpose     : Private HEADER include
 #define HEADER_PRIVATE_H
 
 
-#include "HEADER.h"
-#include "WIDGET.h"
-#include "WM.h"
-#include "GUI_ARRAY.h"
+#include <Inc/GUI_ARRAY.h>
+#include <Inc/HEADER.h>
+#include <Inc/WIDGET.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

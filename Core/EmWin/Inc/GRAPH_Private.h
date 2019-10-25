@@ -54,9 +54,9 @@ Purpose     : GRAPH private header file
 #ifndef GRAPH_PRIVATE_H
 #define GRAPH_PRIVATE_H
 
-#include "GRAPH.h"
-#include "GUI_ARRAY.h"
-#include "WIDGET.h"
+#include <Inc/GRAPH.h>
+#include <Inc/GUI_ARRAY.h>
+#include <Inc/WIDGET.h>
 
 #if GUI_WINSUPPORT
 

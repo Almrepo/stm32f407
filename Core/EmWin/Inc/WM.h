@@ -55,10 +55,10 @@ Purpose     : Windows manager include
 #define WM_H
 
 
-#include "GUI_ConfDefaults.h"
-#include "GUI_Type.h"      /* Needed because of typedefs only */
-#include "WM_GUI.h"       /* Some functions needed by GUI routines */
-#include "GUI.h"
+#include <Inc/GUI.h>
+#include <Inc/GUI_ConfDefaults.h>
+#include <Inc/GUI_Type.h>      /* Needed because of typedefs only */
+#include <Inc/WM_GUI.h>       /* Some functions needed by GUI routines */
 
 #if defined(__cplusplus)
 extern "C" {     /* Make sure we have C-declarations in C++ programs */

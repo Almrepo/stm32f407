@@ -58,7 +58,7 @@ Attention : Do not modify this file ! If you do, you will not
 #ifndef  GUI_FONTINTERN_H    /* Guard against multiple inclusion */
 #define  GUI_FONTINTERN_H
 
-#include "GUI.h"
+#include <Inc/GUI.h>
 
 #if defined(__cplusplus)
 extern "C" {     /* Make sure we have C-declarations in C++ programs */

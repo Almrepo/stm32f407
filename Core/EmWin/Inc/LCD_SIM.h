@@ -54,7 +54,7 @@ Purpose     : Declares LCD interface functions
 #ifndef LCDSIM_H
 #define LCDSIM_H
 
-#include "LCD.h"
+#include <Inc/LCD.h>
 
 /************************************************************
 *

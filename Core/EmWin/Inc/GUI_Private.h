@@ -54,11 +54,11 @@ Purpose     : GUI internal declarations
 #ifndef GUI_PRIVATE_H
 #define GUI_PRIVATE_H
 
-#include "GUI.h"
-#include "LCD_Protected.h"
-#include "GUI_Debug.h"
+#include <Inc/GUI.h>
+#include <Inc/GUI_Debug.h>
+#include <Inc/LCD_Protected.h>
 #if GUI_WINSUPPORT
-  #include "WM_GUI.h"
+  #include <Inc/WM_GUI.h>
 #endif
 
 #if defined(__cplusplus)

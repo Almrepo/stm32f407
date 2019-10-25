@@ -35,9 +35,9 @@ Purpose     : SWIPELIST include
 #ifndef SWIPELIST_PRIVATE_H
 #define SWIPELIST_PRIVATE_H
 
-#include "SWIPELIST.h"
-#include "GUI_Private.h"
-#include "GUI_ARRAY.h"
+#include <Inc/GUI_ARRAY.h>
+#include <Inc/GUI_Private.h>
+#include <Inc/SWIPELIST.h>
 
 #if GUI_WINSUPPORT
 

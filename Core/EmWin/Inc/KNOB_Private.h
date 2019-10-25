@@ -54,8 +54,8 @@ Purpose     : KNOB include
 #ifndef KNOB_PRIVATE_H
 #define KNOB_PRIVATE_H
 
-#include "KNOB.h"
-#include "GUI_Private.h"
+#include <Inc/GUI_Private.h>
+#include <Inc/KNOB.h>
 
 #if (GUI_SUPPORT_MEMDEV && GUI_WINSUPPORT)
 

@@ -54,7 +54,7 @@ Purpose     : Private declarations for GUIDRV_DCache driver
 #ifndef GUIDRV_DCACHE_PRIVATE_H
 #define GUIDRV_DCACHE_PRIVATE_H
 
-#include "GUIDRV_DCache.h"
+#include <Inc/GUIDRV_DCache.h>
 
 #if defined(__cplusplus)
 extern "C" {     /* Make sure we have C-declarations in C++ programs */

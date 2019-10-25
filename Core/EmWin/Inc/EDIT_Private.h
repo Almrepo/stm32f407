@@ -54,11 +54,11 @@ Purpose     : Internal header file
 #ifndef EDIT_PRIVATE_H
 #define EDIT_PRIVATE_H
 
-#include "EDIT.h"
+#include <Inc/EDIT.h>
 
 #if GUI_WINSUPPORT
 
-#include "WIDGET.h"
+#include <Inc/WIDGET.h>
 
 /*********************************************************************
 *

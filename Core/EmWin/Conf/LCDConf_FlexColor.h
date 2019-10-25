@@ -54,6 +54,9 @@ Purpose     : Display driver configuration file
 #ifndef LCDCONF_H
 #define LCDCONF_H
 
+#include "LCD_ili9341.h"
+
+
 #endif /* LCDCONF_H */
 
 /*************************** End of file ****************************/

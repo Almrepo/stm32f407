@@ -54,9 +54,9 @@ Purpose     : ICONVIEW include
 #ifndef ICONVIEW_H
 #define ICONVIEW_H
 
-#include "WM.h"
-#include "DIALOG_Intern.h"      /* Req. for Create indirect data structure */
-#include "WIDGET.h"
+#include <Inc/DIALOG_Intern.h>      /* Req. for Create indirect data structure */
+#include <Inc/WIDGET.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

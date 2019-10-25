@@ -54,8 +54,8 @@ Purpose     : TREEVIEW private header file
 #ifndef TREEVIEW_PRIVATE_H
 #define TREEVIEW_PRIVATE_H
 
-#include "WM.h"
-#include "TREEVIEW.h"
+#include <Inc/TREEVIEW.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

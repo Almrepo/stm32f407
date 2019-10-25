@@ -54,9 +54,9 @@ Purpose     : Private MULTIPAGE include
 #ifndef MULTIPAGE_PRIVATE_H
 #define MULTIPAGE_PRIVATE_H
 
-#include "GUI_Debug.h"
-#include "GUI_ARRAY.h"
-#include "MULTIPAGE.h"
+#include <Inc/GUI_ARRAY.h>
+#include <Inc/GUI_Debug.h>
+#include <Inc/MULTIPAGE.h>
 
 #if GUI_WINSUPPORT
 

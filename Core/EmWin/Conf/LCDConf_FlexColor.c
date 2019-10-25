@@ -51,8 +51,9 @@ Purpose     : Display controller configuration (single layer)
   ******************************************************************************
   */
 
-#include "GUI.h"
-#include "GUIDRV_FlexColor.h"
+#include <Inc/GUI.h>
+#include <Inc/GUIDRV_FlexColor.h>
+#include "LCDConf_FlexColor.h"
 
 /*********************************************************************
 *
@@ -107,6 +108,7 @@ Purpose     : Display controller configuration (single layer)
 */
 static void LcdWriteReg(U16 Data) {
   // ... TBD by user
+	CMD_ADR=Data;
 }
 
 /********************************************************************
@@ -118,6 +120,7 @@ static void LcdWriteReg(U16 Data) {
 */
 static void LcdWriteData(U16 Data) {
   // ... TBD by user
+	DAT_ADR=Data;
 }
 
 /********************************************************************
@@ -130,6 +133,8 @@ static void LcdWriteData(U16 Data) {
 static void LcdWriteDataMultiple(U16 * pData, int NumItems) {
   while (NumItems--) {
     // ... TBD by user
+	  DAT_ADR=*pData;
+	  pData++;
   }
 }
 
@@ -143,6 +148,8 @@ static void LcdWriteDataMultiple(U16 * pData, int NumItems) {
 static void LcdReadDataMultiple(U16 * pData, int NumItems) {
   while (NumItems--) {
     // ... TBD by user
+	  *pData = DAT_ADR;
+	  pData++;
   }
 }
 
@@ -177,7 +184,8 @@ void LCD_X_Config(void) {
   //
   // Orientation
   //
-  Config.Orientation = GUI_SWAP_XY | GUI_MIRROR_Y;
+  Config.Orientation =GUI_SWAP_XY;// GUI_MIRROR_X;//GUI_SWAP_XY | GUI_MIRROR_X;//GUI_MIRROR_X;
+ // Config.RegEntryMode=0x06;
   GUIDRV_FlexColor_Config(pDevice, &Config);
   //
   // Set controller and operation mode
@@ -186,9 +194,9 @@ void LCD_X_Config(void) {
   PortAPI.pfWrite16_A1  = LcdWriteData;
   PortAPI.pfWriteM16_A1 = LcdWriteDataMultiple;
   PortAPI.pfReadM16_A1  = LcdReadDataMultiple;
-  GUIDRV_FlexColor_SetFunc(pDevice, &PortAPI, GUIDRV_FLEXCOLOR_F66708, GUIDRV_FLEXCOLOR_M16C0B16);
+  GUIDRV_FlexColor_SetFunc(pDevice, &PortAPI, GUIDRV_FLEXCOLOR_F66709, GUIDRV_FLEXCOLOR_M16C0B16);
 }
-
+/*GUIDRV_FLEXCOLOR_M16C0B16*/
 /*********************************************************************
 *
 *       LCD_X_DisplayDriver
@@ -224,6 +232,7 @@ int LCD_X_DisplayDriver(unsigned LayerIndex, unsigned Cmd, void * pData) {
     // to be adapted by the customer...
     //
     // ...
+	  LCD_ili9341_ini();
     return 0;
   }
   default:

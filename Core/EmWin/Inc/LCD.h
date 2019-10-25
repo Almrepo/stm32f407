@@ -54,8 +54,8 @@ Purpose     : Declares LCD interface functions
 #ifndef LCD_H
 #define LCD_H
 
-#include "GUI_ConfDefaults.h" /* Used for GUI_CONST_STORAGE */
-#include "Global.h"
+#include <Inc/Global.h>
+#include <Inc/GUI_ConfDefaults.h> /* Used for GUI_CONST_STORAGE */
 
 #if defined(__cplusplus)
 extern "C" {     /* Make sure we have C-declarations in C++ programs */

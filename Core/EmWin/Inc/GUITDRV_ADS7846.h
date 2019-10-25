@@ -85,7 +85,7 @@ Notes
 #ifndef GUITDRV_ADS7846_H            /* Make sure we only include it once */
 #define GUITDRV_ADS7846_H
 
-#include "GUI_Type.h"
+#include <Inc/GUI_Type.h>
 
 #if defined(__cplusplus)
 extern "C" {     /* Make sure we have C-declarations in C++ programs */

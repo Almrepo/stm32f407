@@ -54,10 +54,10 @@ Purpose     : FRAMEWIN private header file
 #ifndef FRAMEWIN_PRIVATE_H
 #define FRAMEWIN_PRIVATE_H
 
-#include "WM.h"
-#include "FRAMEWIN.h"
-#include "WIDGET.h"
-#include "GUI_HOOK.h"
+#include <Inc/FRAMEWIN.h>
+#include <Inc/GUI_HOOK.h>
+#include <Inc/WIDGET.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

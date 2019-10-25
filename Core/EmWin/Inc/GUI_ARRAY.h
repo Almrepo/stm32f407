@@ -54,7 +54,7 @@ Purpose     : Array handling routines
 #ifndef GUI_ARRAY_H
 #define GUI_ARRAY_H
 
-#include "WM_Intern.h"
+#include <Inc/WM_Intern.h>
 
 #if GUI_WINSUPPORT
 

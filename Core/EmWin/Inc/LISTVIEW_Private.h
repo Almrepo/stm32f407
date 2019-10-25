@@ -54,14 +54,14 @@ Purpose     : Private LISTVIEW include
 #ifndef LISTVIEW_PRIVATE_H
 #define LISTVIEW_PRIVATE_H
 
-#include "WM.h"
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 
 #include <stddef.h>
 
-#include "LISTVIEW.h"
-#include "GUI_ARRAY.h"
+#include <Inc/LISTVIEW.h>
+#include <Inc/GUI_ARRAY.h>
 
 /*********************************************************************
 *

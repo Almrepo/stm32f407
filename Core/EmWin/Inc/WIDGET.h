@@ -58,7 +58,7 @@ Purpose     : Widget interface
 extern "C" {     /* Make sure we have C-declarations in C++ programs */
 #endif
 
-#include "WM_Intern.h"  /* Window manager, including some internals, which speed things up */
+#include <Inc/WM_Intern.h>  /* Window manager, including some internals, which speed things up */
 
 #if GUI_WINSUPPORT
 
@@ -94,7 +94,7 @@ typedef struct {
 *
 **********************************************************************
 */
-#include "SCROLLBAR.h"
+#include <Inc/SCROLLBAR.h>
 
 /*********************************************************************
 *

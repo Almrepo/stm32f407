@@ -54,7 +54,7 @@ Purpose     : Dialog box include
 #ifndef DIALOG_INTERN_H
 #define DIALOG_INTERN_H
 
-#include "WM.h"
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

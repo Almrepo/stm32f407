@@ -54,9 +54,10 @@ Purpose     : To be used only by the display drivers
 #ifndef LCD_Private_H
 #define LCD_Private_H
 
+#include <Inc/GUI.h>
+#include <Inc/LCD_Protected.h>
+
 #include "LCDConf.h"
-#include "LCD_Protected.h"
-#include "GUI.h"
 
 /*********************************************************************
 *

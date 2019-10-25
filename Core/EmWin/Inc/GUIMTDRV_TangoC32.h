@@ -35,7 +35,7 @@ Purpose     : Interface definition for GUIMTDRV_TangoC32 driver
 #ifndef GUIMTDRV_TANGOC32_H
 #define GUIMTDRV_TANGOC32_H
 
-#include "GUI_Type.h"
+#include <Inc/GUI_Type.h>
 
 #if defined(__cplusplus)
 //extern "C" {     /* Make sure we have C-declarations in C++ programs */

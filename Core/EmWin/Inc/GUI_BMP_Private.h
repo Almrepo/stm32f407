@@ -54,7 +54,7 @@ Purpose     : Private header file for GUI_BMP... functions
 #ifndef GUI_BMP_PRIVATE_H
 #define GUI_BMP_PRIVATE_H
 
-#include "GUI_Private.h"
+#include <Inc/GUI_Private.h>
 
 /*********************************************************************
 *

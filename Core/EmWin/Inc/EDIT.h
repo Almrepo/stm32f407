@@ -54,8 +54,8 @@ Purpose     : EDIT include
 #ifndef EDIT_H
 #define EDIT_H
 
-#include "WM.h"
-#include "DIALOG_Intern.h" // Required for Create indirect data structure
+#include <Inc/DIALOG_Intern.h> // Required for Create indirect data structure
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

@@ -54,11 +54,11 @@ Purpose     : SPINBOX header file
 #ifndef SPINBOX_H
 #define SPINBOX_H
 
-#include "WM.h"
-#include "DIALOG_Intern.h" // Required for Create indirect data structure
-#include "WIDGET.h"
-#include "GUI_Debug.h"
-#include "EDIT.h"
+#include <Inc/DIALOG_Intern.h> // Required for Create indirect data structure
+#include <Inc/EDIT.h>
+#include <Inc/GUI_Debug.h>
+#include <Inc/WIDGET.h>
+#include <Inc/WM.h>
 
 #if GUI_WINSUPPORT
 

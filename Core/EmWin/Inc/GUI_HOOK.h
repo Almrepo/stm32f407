@@ -54,7 +54,7 @@ Purpose     : Hook handling routines
 #ifndef GUI_HOOK_H
 #define GUI_HOOK_H
 
-#include "WM_Intern.h"
+#include <Inc/WM_Intern.h>
 
 #if GUI_WINSUPPORT
 

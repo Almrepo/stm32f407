@@ -58,8 +58,8 @@ Attention : Do not modify this file ! If you do, you will not
 #ifndef  GUI_VNC_H
 #define  GUI_VNC_H
 
-#include "GUI_Private.h"
-#include "GUI_Type.h"
+#include <Inc/GUI_Private.h>
+#include <Inc/GUI_Type.h>
 
 #if defined(__cplusplus)
 extern "C" {     /* Make sure we have C-declarations in C++ programs */

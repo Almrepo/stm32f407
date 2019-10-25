@@ -54,9 +54,9 @@ Purpose     : Private SPINBOX include
 #ifndef SPINBOX_PRIVATE_H
 #define SPINBOX_PRIVATE_H
 
-#include "SPINBOX.h"
-#include "EDIT.h"
-#include "GUI_Private.h"
+#include <Inc/EDIT.h>
+#include <Inc/GUI_Private.h>
+#include <Inc/SPINBOX.h>
 
 #if GUI_WINSUPPORT
 
