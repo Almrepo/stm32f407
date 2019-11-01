@@ -19,12 +19,11 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
-#include <Inc/GUI.h>
 #include "main.h"
-#include "LCD_ili9341.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "My_WindowDLG.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -42,6 +41,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+CRC_HandleTypeDef hcrc;
+
 RTC_HandleTypeDef hrtc;
 
 SPI_HandleTypeDef hspi1;
@@ -57,6 +58,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_FSMC_Init(void);
 static void MX_RTC_Init(void);
+static void MX_CRC_Init(void);
 static void MX_SPI1_Init(void);
 /* USER CODE BEGIN PFP */
 
@@ -65,6 +67,7 @@ static void MX_SPI1_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+uint8_t INT_Touch_value=0;
 /* USER CODE END 0 */
 
 /**
@@ -98,15 +101,28 @@ int main(void)
   MX_GPIO_Init();
   MX_FSMC_Init();
   MX_RTC_Init();
+  MX_CRC_Init();
   MX_SPI1_Init();
-  __HAL_RCC_CRC_CLK_ENABLE();
-
   /* USER CODE BEGIN 2 */
-   //LCD_ili9341_ini();
-     //LCD_ili9341_Clear(RED);
+  // LCD_ili9341_ini();
+  // LCD_ili9341_Clear(RED);
+ // __HAL_RCC_CRC_CLK_ENABLE();
   GUI_Init();
-//GUI_FillCircle(100,100, 10);
-  //LCD_ili9341_Clear(RED);
+  GUI_SelectLayer(1);
+  //CreateMy_Window();
+  //CreateWindow();
+  GUI_CURSOR_Select(&GUI_CursorCrossS);
+  GUI_CURSOR_Show();
+
+  /* Touch panel */
+ if (0) // 1 - калибруем, 0- вносим значения в матрицу (значения (Matrix) должны быть заранее внесены Вами, например посмотрев их в Дебаггере)
+  {
+  TouchPanel_Calibrate();
+  }
+  else
+  {
+  	Touch_Cal_Read (&matrix);
+  }
 
   /* USER CODE END 2 */
 
@@ -114,10 +130,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  if(INT_Touch_value==1){
+	  getDisplayPoint(&display, Read_Ads7846(), &matrix );
+	  INT_Touch_value=0;
+	  }else
+	  GUI_Exec();
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
   }
+
   /* USER CODE END 3 */
 }
 
@@ -169,6 +193,32 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief CRC Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_CRC_Init(void)
+{
+
+  /* USER CODE BEGIN CRC_Init 0 */
+
+  /* USER CODE END CRC_Init 0 */
+
+  /* USER CODE BEGIN CRC_Init 1 */
+
+  /* USER CODE END CRC_Init 1 */
+  hcrc.Instance = CRC;
+  if (HAL_CRC_Init(&hcrc) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN CRC_Init 2 */
+
+  /* USER CODE END CRC_Init 2 */
+
 }
 
 /**
@@ -295,7 +345,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : PA2 */
   GPIO_InitStruct.Pin = GPIO_PIN_2;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
@@ -312,6 +362,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
 
 }
 
@@ -377,6 +431,22 @@ static void MX_FSMC_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+
+ if(GPIO_Pin== GPIO_PIN_2) {
+
+ INT_Touch_value=1;
+//getDisplayPoint(&display, Read_Ads7846(), &matrix );
+
+ } else{
+
+   __NOP();
+
+ }
+}
 
 /* USER CODE END 4 */
 

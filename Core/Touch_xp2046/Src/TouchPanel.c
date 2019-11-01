@@ -15,7 +15,7 @@ Coordinate ScreenSample[3];
 Coordinate DisplaySample[3] =   {
                       { 25, 25 }, // ������ ����� ����������
 											{ 300 , 100}, // ������
-                      { 300, 200}
+                      { 150, 200}
 	                            } ;
 
 /* Private define ------------------------------------------------------------*/
@@ -40,6 +40,7 @@ void TP_GetAdXY(int *x,int *y)
 	unsigned char cmd, temp;
 
   cmd = CHX;
+
 HAL_SPI_TransmitReceive(&hspi1, &cmd, (uint8_t *) &temp, 1, 3000); // ���������� ������� �� X
 HAL_Delay(1); 
 
@@ -61,7 +62,6 @@ HAL_SPI_TransmitReceive(&hspi1, &cmd, (uint8_t *) &temp, 1, 3000);
   buff |= temp; 
   *y= ((buff >> 3) & 0x0FFF) ; //��������� Y
 }
-
 
 
 /*******************************************************************************
@@ -214,9 +214,7 @@ FunctionalState setCalibrationMatrix( Coordinate * displayPtr,
 * Function Name  : getDisplayPoint // ��������� ����� �������, ��������� � �������� ��������.
 * Attention		 : None
 *******************************************************************************/
-FunctionalState getDisplayPoint(Coordinate * displayPtr,
-                     Coordinate * screenPtr,
-                     Matrix * matrixPtr )
+FunctionalState getDisplayPoint(Coordinate * displayPtr, Coordinate * screenPtr,Matrix * matrixPtr )
 {
   FunctionalState retTHRESHOLD =ENABLE ;
 
@@ -232,12 +230,16 @@ FunctionalState getDisplayPoint(Coordinate * displayPtr,
                       (matrixPtr->En * screenPtr->y) + 
                        matrixPtr->Fn 
                     ) / matrixPtr->Divider ;
-
+    displayPtr->x=320-displayPtr->x;
+    displayPtr->y=240-displayPtr->y;
+    GUI_TOUCH_StoreState(displayPtr->x,displayPtr->y);
+    GUI_CURSOR_SetPosition(displayPtr->x,displayPtr->y);
   }
   else
   {
-    retTHRESHOLD = DISABLE;
+	     retTHRESHOLD = DISABLE;
   }
+
   return(retTHRESHOLD);
 } 
 
@@ -250,12 +252,12 @@ void GetPoint_TS  (uint16_t *x, uint16_t *y)
   if( matrixPtr->Divider != 0 )
   {
     /* XD = AX+BY+C */        
-    displayPtr->x = ( (matrixPtr->An * screenPtr->x) + 
+    displayPtr->x = ( (matrixPtr->An * screenPtr->x) +
                       (matrixPtr->Bn * screenPtr->y) + 
                        matrixPtr->Cn 
                     ) / matrixPtr->Divider ;
 	/* YD = DX+EY+F */        
-    displayPtr->y = ( (matrixPtr->Dn * screenPtr->x) + 
+    displayPtr->y = ( (matrixPtr->Dn * screenPtr->x) +
                       (matrixPtr->En * screenPtr->y) + 
                        matrixPtr->Fn 
                     ) / matrixPtr->Divider ;
@@ -306,15 +308,19 @@ LCD_ili9341_Clear(BLACK);
 
 void Touch_Cal_Read (Matrix * matrixPtr) // ����� ����� ������ ���������� ������ �������, ��� � ������� ������� ����������� ����������
 {																				// ��������� ����� ���������� � ��������� (���������)
-	matrixPtr->An = -4400;
-	matrixPtr->Bn = 329175;
-	matrixPtr->Cn = -107729200;
-	matrixPtr->Dn = -310500;
-	matrixPtr->En = -21725;
-	matrixPtr->Fn = 1157034400;
-	matrixPtr->Divider = 3720161;
+	matrixPtr->An = 2575;//-4400;
+	matrixPtr->Bn = 474000;//329175;
+	matrixPtr->Cn = -190988525;//-107729200;
+	matrixPtr->Dn = -430500;//-429775;//-310500;
+	matrixPtr->En = -21500;//-21725;
+	matrixPtr->Fn = 1578894425;//1579784425;//1157034400;
+	matrixPtr->Divider =5255690;//3720161;
 
 }	
+
+
+
+
 
 /*********************************************************************************************************
       END FILE

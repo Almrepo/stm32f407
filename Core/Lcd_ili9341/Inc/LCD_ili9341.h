@@ -14,8 +14,8 @@
 #define CMD_ADR   		  	    (*(uint16_t *)0x60000000)
 #define DAT_ADR    			      (*(uint16_t *)0x60020000)
 
-#define LCD_WIDTH       240
-#define LCD_HEIGHT      320
+#define LCD_WIDTH     240
+#define LCD_HEIGHT    320
 #define LCD_PIXEL_COUNT	LCD_WIDTH * LCD_HEIGHT
 
 extern char array [100]; 

@@ -29,7 +29,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
-#include "stm32f4xx_hal_rcc_ex.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "correct_ANSI.h"
@@ -37,7 +37,9 @@ extern "C" {
 #include "font.h"
 #include "LCD_ili9341.h"
 #include "TouchPanel.h"
-#include <Inc/GUI.h>
+#include "GUI.h"
+#include "My_WindowDLG.h"
+#include "stm32f4xx_it.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

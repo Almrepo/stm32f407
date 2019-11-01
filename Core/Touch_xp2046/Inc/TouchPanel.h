@@ -4,6 +4,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 #include "main.h"
+#include "GUI.h"
 //#include "spi.h"
 //#include "tft_lcd.h"
 //#include "stm32f4xx_"

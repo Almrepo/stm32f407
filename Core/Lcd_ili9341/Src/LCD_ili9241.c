@@ -325,7 +325,7 @@ void LCD_ili9341_ini (void)
     			LCD_SendCommand(0xC7);//VCOM Control 2
     			LCD_SendData(0x86);
     			//DelayMicro(1);
-    			LCD_ili9341_SetRotation(3);
+    	//		LCD_ili9341_SetRotation(3);//3
     			//DelayMicro(1);
     			LCD_SendCommand(0x3A);//Pixel Format Set
     			LCD_SendData(0x55);//16bit

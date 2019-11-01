@@ -65,8 +65,8 @@ Purpose     : Display controller configuration (single layer)
 //
 // Physical display size
 //
-#define XSIZE_PHYS  240 // To be adapted to x-screen size
-#define YSIZE_PHYS  320 // To be adapted to y-screen size
+#define XSIZE_PHYS 240 // To be adapted to x-screen size 240
+#define YSIZE_PHYS  320 // To be adapted to y-screen size 320
 
 /*********************************************************************
 *
@@ -184,8 +184,8 @@ void LCD_X_Config(void) {
   //
   // Orientation
   //
-  Config.Orientation =GUI_SWAP_XY;// GUI_MIRROR_X;//GUI_SWAP_XY | GUI_MIRROR_X;//GUI_MIRROR_X;
- // Config.RegEntryMode=0x06;
+  Config.Orientation =GUI_SWAP_XY;//GUI_SWAP_XY;// //GUI_SWAP_XY | GUI_MIRROR_X;
+ // Config.RegEntryMode=0x48;
   GUIDRV_FlexColor_Config(pDevice, &Config);
   //
   // Set controller and operation mode
