@@ -60,6 +60,7 @@ static void MX_FSMC_Init(void);
 static void MX_RTC_Init(void);
 static void MX_CRC_Init(void);
 static void MX_SPI1_Init(void);
+static void MX_USART3_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -103,16 +104,19 @@ int main(void)
   MX_RTC_Init();
   MX_CRC_Init();
   MX_SPI1_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   // LCD_ili9341_ini();
   // LCD_ili9341_Clear(RED);
  // __HAL_RCC_CRC_CLK_ENABLE();
   GUI_Init();
-  GUI_SelectLayer(1);
-  //CreateMy_Window();
-  //CreateWindow();
-  GUI_CURSOR_Select(&GUI_CursorCrossS);
-  GUI_CURSOR_Show();
+  init_sensor_temp_OW();
+  //GUI_SelectLayer(1);
+  // CreateMy_Window();
+  CreateWindow2();
+
+ // GUI_CURSOR_Select(&GUI_CursorCrossS);
+  //GUI_CURSOR_Show();
 
   /* Touch panel */
  if (0) // 1 - калибруем, 0- вносим значения в матрицу (значения (Matrix) должны быть заранее внесены Вами, например посмотрев их в Дебаггере)
@@ -130,10 +134,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(INT_Touch_value==1){
-	  getDisplayPoint(&display, Read_Ads7846(), &matrix );
-	  INT_Touch_value=0;
-	  }else
+
 	  GUI_Exec();
 
     /* USER CODE END WHILE */
@@ -259,8 +260,8 @@ static void MX_RTC_Init(void)
 
   /** Initialize RTC and set the Time and Date 
   */
-  sTime.Hours = 0;
-  sTime.Minutes = 0;
+  sTime.Hours = 15;
+  sTime.Minutes = 30;
   sTime.Seconds = 0;
   sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   sTime.StoreOperation = RTC_STOREOPERATION_RESET;
@@ -269,8 +270,8 @@ static void MX_RTC_Init(void)
     Error_Handler();
   }
   sDate.WeekDay = RTC_WEEKDAY_MONDAY;
-  sDate.Month = RTC_MONTH_JANUARY;
-  sDate.Date = 1;
+  sDate.Month = RTC_MONTH_DECEMBER;
+  sDate.Date = 22;
   sDate.Year = 0;
 
   if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BIN) != HAL_OK)
@@ -322,6 +323,57 @@ static void MX_SPI1_Init(void)
 }
 
 /**
+  * @brief USART3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART3_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART3_Init 0 */
+
+  /* USER CODE END USART3_Init 0 */
+
+  LL_USART_InitTypeDef USART_InitStruct = {0};
+
+  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  /* Peripheral clock enable */
+  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_USART3);
+  
+  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOC);
+  /**USART3 GPIO Configuration  
+  PC10   ------> USART3_TX
+  PC11   ------> USART3_RX 
+  */
+  GPIO_InitStruct.Pin = LL_GPIO_PIN_10|LL_GPIO_PIN_11;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
+  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
+  GPIO_InitStruct.Alternate = LL_GPIO_AF_7;
+  LL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /* USER CODE BEGIN USART3_Init 1 */
+
+  /* USER CODE END USART3_Init 1 */
+  USART_InitStruct.BaudRate = 115200;
+  USART_InitStruct.DataWidth = LL_USART_DATAWIDTH_8B;
+  USART_InitStruct.StopBits = LL_USART_STOPBITS_1;
+  USART_InitStruct.Parity = LL_USART_PARITY_NONE;
+  USART_InitStruct.TransferDirection = LL_USART_DIRECTION_TX_RX;
+  USART_InitStruct.HardwareFlowControl = LL_USART_HWCONTROL_NONE;
+  USART_InitStruct.OverSampling = LL_USART_OVERSAMPLING_16;
+  LL_USART_Init(USART3, &USART_InitStruct);
+  LL_USART_ConfigAsyncMode(USART3);
+  LL_USART_Enable(USART3);
+  /* USER CODE BEGIN USART3_Init 2 */
+
+  /* USER CODE END USART3_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -345,7 +397,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : PA2 */
   GPIO_InitStruct.Pin = GPIO_PIN_2;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
@@ -436,12 +488,13 @@ static void MX_FSMC_Init(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 
- if(GPIO_Pin== GPIO_PIN_2) {
+ if(GPIO_Pin== GPIO_PIN_2 ){
 
- INT_Touch_value=1;
-//getDisplayPoint(&display, Read_Ads7846(), &matrix );
-
- } else{
+	 if (TP_INT_IN==0|| INT_Touch_value==1){
+   getDisplayPoint(&display, Read_Ads7846(), &matrix );
+	 }
+  }
+ else{
 
    __NOP();
 

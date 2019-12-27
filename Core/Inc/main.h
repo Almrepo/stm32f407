@@ -29,6 +29,18 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx_ll_usart.h"
+#include "stm32f4xx_ll_rcc.h"
+#include "stm32f4xx_ll_bus.h"
+#include "stm32f4xx_ll_cortex.h"
+#include "stm32f4xx_ll_system.h"
+#include "stm32f4xx_ll_utils.h"
+#include "stm32f4xx_ll_pwr.h"
+#include "stm32f4xx_ll_gpio.h"
+#include "stm32f4xx_ll_dma.h"
+
+#include "stm32f4xx_ll_exti.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -40,6 +52,10 @@ extern "C" {
 #include "GUI.h"
 #include "My_WindowDLG.h"
 #include "stm32f4xx_it.h"
+#include "ow.h"
+#include "ow_device_ds18x20.h"
+#include "scan_devices.h"
+#include "mainTask.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

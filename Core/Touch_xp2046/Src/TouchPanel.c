@@ -8,7 +8,7 @@
 /* Private variables ---------------------------------------------------------*/
 Matrix matrix ;
 Coordinate  display ;
-
+extern uint8_t INT_Touch_value;
 /* DisplaySample */
 Coordinate ScreenSample[3];
 /* LCD??�???�? */
@@ -42,7 +42,7 @@ void TP_GetAdXY(int *x,int *y)
   cmd = CHX;
 
 HAL_SPI_TransmitReceive(&hspi1, &cmd, (uint8_t *) &temp, 1, 3000); // ���������� ������� �� X
-HAL_Delay(1); 
+//HAL_Delay(1);
 
 cmd  = 0;
 temp = 0;
@@ -51,7 +51,7 @@ HAL_SPI_TransmitReceive(&hspi1, &cmd, (uint8_t *) &temp, 1, 3000);
   buff = temp<<8; 
 	cmd = CHY;
 HAL_SPI_TransmitReceive(&hspi1, &cmd, (uint8_t *) &temp, 1, 3000); // �������� ������� ���� � ������������ ���������� ������� �� Y
-HAL_Delay(1); 
+//HAL_Delay(1);
   buff |= temp; 
   *x= ((buff >>3) & 0x0FFF) ; //��������� �
 	
@@ -174,6 +174,7 @@ FunctionalState setCalibrationMatrix( Coordinate * displayPtr,
                           Matrix * matrixPtr)
 {
 
+
   FunctionalState retTHRESHOLD = ENABLE ;
   /* K=(X0-X2) (Y1-Y2)-(X1-X2) (Y0-Y2) */
   matrixPtr->Divider = ((screenPtr[0].x - screenPtr[2].x) * (screenPtr[1].y - screenPtr[2].y)) - 
@@ -218,6 +219,9 @@ FunctionalState getDisplayPoint(Coordinate * displayPtr, Coordinate * screenPtr,
 {
   FunctionalState retTHRESHOLD =ENABLE ;
 
+  static GUI_PID_STATE TS_State;
+
+
   if( matrixPtr->Divider != 0 )
   {
     /* XD = AX+BY+C */        
@@ -230,10 +234,36 @@ FunctionalState getDisplayPoint(Coordinate * displayPtr, Coordinate * screenPtr,
                       (matrixPtr->En * screenPtr->y) + 
                        matrixPtr->Fn 
                     ) / matrixPtr->Divider ;
-    displayPtr->x=320-displayPtr->x;
-    displayPtr->y=240-displayPtr->y;
-    GUI_TOUCH_StoreState(displayPtr->x,displayPtr->y);
-    GUI_CURSOR_SetPosition(displayPtr->x,displayPtr->y);
+   // displayPtr->x=320-displayPtr->x;
+   // displayPtr->y=240-displayPtr->y;
+    if (TP_INT_IN==0)
+    {
+    	EXTI->PR = (1<<2);
+    	INT_Touch_value=1;
+    	TS_State.Pressed = INT_Touch_value;
+    	TS_State.x = 320-displayPtr->x;
+    	TS_State.y = 240-displayPtr->y;
+    	GUI_PID_StoreState(&TS_State);
+
+
+    }
+    else
+    {
+    	if(TP_INT_IN==1)
+    	{
+    		INT_Touch_value=0;
+    		EXTI->PR = (1<<2);
+    		TS_State.Pressed = INT_Touch_value;
+    		GUI_PID_StoreState(&TS_State);
+
+
+
+    	}
+
+    }
+   // GUI_TOUCH_StoreState(displayPtr->x,displayPtr->y);
+   // GUI_CURSOR_SetPosition(displayPtr->x,displayPtr->y);
+   // INT_Touch_value=0;
   }
   else
   {
